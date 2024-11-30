@@ -7,7 +7,7 @@ import styles from '@/styles/Home.module.css'
 export default function Home() {
   return (
     <>
-      <div>Test</div>
+     <div className='bg-red-500'>Test</div>
     </>
   )
 }
