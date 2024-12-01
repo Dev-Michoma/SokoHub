@@ -19,7 +19,7 @@ export default function Home() {
   <div className='bg-blue-900 h-screen w-screen '>
     <Nav/>
   <div className='text-white'>
-  Logged in {session.user.email}
+  {/* Logged in {session.user.email} */}
   </div>
   </div>
   )
