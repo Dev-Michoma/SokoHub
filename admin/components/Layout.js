@@ -4,7 +4,7 @@ import styles from '@/styles/Home.module.css'
 import { useSession, signIn, signOut } from "next-auth/react"
 import Nav from '@/components/Nav'
 
-export default function Layout() {
+export default function Layout({children}) {
   const { data: session } = useSession()
   if(!session){
     return(
@@ -19,7 +19,7 @@ export default function Layout() {
   <div className='bg-blue-900 h-screen flex  w-screen '>
     <Nav/>
   <div className='bg-white mt-1 mr-1 rounded-lg p-4 mb-2  flex-grow'>
-  {/* Logged in {session.user.email} */}
+  {children}
   </div>
   </div>
   )
