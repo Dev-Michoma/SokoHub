@@ -7,6 +7,10 @@ export default async function handler(req, res) {
      const {method} = req;
   
       await mongooseConnect();
+
+      if (method ==='GET'){
+        res.json(await Good.find());
+      }
    
     if(method =='POST'){
     const {title ,description ,price} = req.body;
