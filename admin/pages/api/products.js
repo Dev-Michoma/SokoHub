@@ -11,8 +11,10 @@ export default async function handler(req, res) {
       if (method ==='GET'){
         if (req.query?.id){
             res.json(await Good.findOne({_id:req.query.id}));
+        }else {
+            res.json(await Good.find());
         }
-        res.json(await Good.find());
+       
       }
    
     if(method =='POST'){
@@ -23,5 +25,13 @@ export default async function handler(req, res) {
     })
     res.json(productDoc)
     }
+
+if (method == 'PUT'){
+    const {title ,description ,price ,_id} = req.body;
+    {
+      await  Good.updateOne({_id} ,{title ,description ,price})
+      res.json(true);
+    }
+}
   }
   
