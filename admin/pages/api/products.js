@@ -9,6 +9,9 @@ export default async function handler(req, res) {
       await mongooseConnect();
 
       if (method ==='GET'){
+        if (req.query?.id){
+            res.json(await Good.findOne({_id:req.query.id}));
+        }
         res.json(await Good.find());
       }
    
