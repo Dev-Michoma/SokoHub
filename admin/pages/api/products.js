@@ -33,5 +33,12 @@ if (method == 'PUT'){
       res.json(true);
     }
 }
+
+if (method === 'DELETE'){
+    if(req.query?.id){
+        await Good.deleteOne({_id:req.query?.id});
+        res.json(true);
+    };
+}
   }
   
