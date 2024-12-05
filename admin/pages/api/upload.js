@@ -7,7 +7,7 @@ export default async function handle (req,res){
   form.parse(req , (err, fields ,files ) =>{
     if(err) reject (err)
     resolve({fields ,files})
-    console.log('length:',files);
+    console.log('length:',files.file.length);
     console.log(fields);
     res.json('ok')
   })
