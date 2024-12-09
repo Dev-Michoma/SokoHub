@@ -37,6 +37,8 @@ export default function Categories(){
 
       function editCategory(category){
                  setEditedCategory(category);
+                 setName(category.name)
+                 setParentCategory(category.parent);
       }
 
     return (
