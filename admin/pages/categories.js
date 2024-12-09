@@ -2,6 +2,8 @@ import Layout from "@/components/Layout";
 import {useEffect, useState} from 'react'
 import axios from 'axios';
 export default function Categories(){
+
+    const [editedCategory ,setEditedCategory] = useState(null);
     const [name ,setName] = useState('');
     const [parentCategory ,setParentCategory] = useState('');
     const [categories ,setCategories] = useState('');
@@ -31,12 +33,16 @@ export default function Categories(){
         setName('');
         fetchCategories();
      }
+ 
 
+      function editCategory(category){
+                 setEditedCategory(category);
+      }
 
     return (
         <Layout>
         <h1>Categories</h1>
-        <label>New Category Name</label>
+        <label>{ editedCategory ?  `Edit category ${editedCategory.name}`: 'Create New Category'}</label>
           <form onSubmit={saveCategory} className="flex gap-1">
           < input type="text" className="mb-0"  onChange= {ev => setName(ev.target.value)}
           value ={name} placeholder={'Category name'}
@@ -68,6 +74,10 @@ export default function Categories(){
                       <tr>
                         <td>{category.name}</td>
                         <td>{category?.parent?.name}</td>
+                        <td> 
+                            <button    onClick={()=> editCategory(category)} className="btn-primary mr-1">Edit</button>
+                            <button className="btn-primary mr-1">Delete</button>
+                        </td>
                       </tr>
                     )
                 )}
