@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import axios from 'axios';
 export default function Categories(){
     const [name ,setName] = useState('');
+    const [parentCategory ,setParentCategory] = useState('');
     const [categories ,setCategories] = useState('');
 
 
@@ -26,7 +27,7 @@ export default function Categories(){
 
     async  function saveCategory(ev){
         ev.preventDefault();
-        await axios.post('/api/categories' , {name})
+        await axios.post('/api/categories' , {name ,parentCategory})
         setName('');
         fetchCategories();
      }
@@ -41,8 +42,11 @@ export default function Categories(){
           value ={name} placeholder={'Category name'}
         
           />
-          <select>
-            <option value="0"> No parent Category</option>
+          <select 
+            onChange ={ev => setParentCategory(ev.target.value)}
+            value={parentCategory}
+          >
+            <option value=""> No parent Category</option>
             {categories.length > 0 && categories.map(
                     category => (
                        <option value={category._id}>{category.name}</option>
@@ -56,9 +60,17 @@ export default function Categories(){
           <table className="basic mt-4">
             <tr>
                 <td>Category name</td>
+                <td>Category Parent</td>
             </tr>
             <tbody>
-             
+            {categories.length > 0 && categories.map(
+                    category => (
+                      <tr>
+                        <td>{category.name}</td>
+                        <td>{category.parent}</td>
+                      </tr>
+                    )
+                )}
             </tbody>
           </table>
         </Layout>
