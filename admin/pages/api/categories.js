@@ -9,6 +9,9 @@ export default async function handle(req ,res) {
          const categoryDoc = await  Category.create({name})
          res.json(categoryDoc)
     }
-
+  
+    if (method === 'GET') {
+        res.json (await Category.find());
+    }
    
 }
