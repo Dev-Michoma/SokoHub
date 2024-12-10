@@ -26,7 +26,7 @@ export default function ProductForm({_id ,title:existingTitle ,description:exist
 
    async  function saveProduct(ev){
        ev.preventDefault();
-       const data ={title ,description ,price};
+       const data ={title ,description ,price ,category};
        if(_id){
         
         await axios.put('/api/products' ,{...data ,_id})

@@ -18,18 +18,18 @@ export default async function handler(req, res) {
       }
    
     if(method =='POST'){
-    const {title ,description ,price} = req.body;
+    const {title ,description ,price ,category} = req.body;
 
     const productDoc = await Good.create({
-        title ,description ,price,
+        title ,description ,price,category,
     })
     res.json(productDoc)
     }
 
 if (method == 'PUT'){
-    const {title ,description ,price ,_id} = req.body;
+    const {title ,description , category,price ,_id} = req.body;
     {
-      await  Good.updateOne({_id} ,{title ,description ,price})
+      await  Good.updateOne({_id} ,{title ,description , category,price})
       res.json(true);
     }
 }
