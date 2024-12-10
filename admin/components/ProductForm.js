@@ -12,6 +12,7 @@ export default function ProductForm({_id ,title:existingTitle ,description:exist
     const router = useRouter();
     const [title ,setTitle] = useState(existingTitle || "" );
     const [description ,setDescription ] =useState(existingDescription || "");
+    const [category ,setCategory] = useState('');
     const [price ,setPrice] = useState(existingPrice);
     const [goToProducts , setGoToProducts] = useState(false);
     const [categories ,setCategories] = useState([]);
@@ -72,8 +73,8 @@ export default function ProductForm({_id ,title:existingTitle ,description:exist
 
             
             <label>Category</label>
-          <div class="relative w-full">
-          <select class="w-full px-4 py-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 appearance-none  text-left">
+          <div class="relative  w-full">
+          <select value={category}  onChange={ev => setCategory(ev.target.value)}  class="w-full px-4 py-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 appearance-none  text-left">
       <option value="">Uncategorized</option>
       {categories.length > 0 && categories.map(c => (
        <option value={c._id}> {c.name}</option>
