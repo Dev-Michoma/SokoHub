@@ -10,8 +10,6 @@ export default async function handle(req ,res) {
          res.json(categoryDoc)
     }
    
-    
-
     if (method == 'PUT'){
     const {name ,parentCategory ,_id} = req.body;
      {
@@ -20,10 +18,12 @@ export default async function handle(req ,res) {
      }
         }
 
-
+     if (method === 'DELETE'){
+        const {_id} = req.query;
+         await   Category.deleteOne({_id});
+         res.json('everything its ok it deleted')
+     }
    
-
-  
     if (method === 'GET') {
         res.json (await Category.find().populate('parent'));
     }
