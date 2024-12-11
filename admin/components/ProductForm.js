@@ -7,12 +7,13 @@ import { useRouter } from 'next/router';
 
 
 
-export default function ProductForm({_id ,title:existingTitle ,description:existingDescription,price:existingPrice,images}){
+export default function ProductForm({_id ,title:existingTitle ,description:existingDescription,
+    category:assignedCategory,price:existingPrice,images}){
     
     const router = useRouter();
     const [title ,setTitle] = useState(existingTitle || "" );
     const [description ,setDescription ] =useState(existingDescription || "");
-    const [category ,setCategory] = useState('');
+    const [category ,setCategory] = useState('assignedCategory || "" ');
     const [price ,setPrice] = useState(existingPrice);
     const [goToProducts , setGoToProducts] = useState(false);
     const [categories ,setCategories] = useState([]);
